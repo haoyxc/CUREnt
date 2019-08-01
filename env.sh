@@ -1,0 +1,1 @@
+export MONGODB_URI=mongodb+srv://bsitenga:thepassword@ourcluster-rri0i.mongodb.net/crazy8?retryWrites=true&w=majority
