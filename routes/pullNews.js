@@ -8,7 +8,7 @@ async function getNews() {
     try{
         let response = await axios.get(`https://api.nytimes.com/svc/topstories/v2/${newsType[0]}.json?api-key=${NY_TIMES_API_KEY}`);
         let articles = response.results
-        console.log(articles);
+        console.log(response);
         // let abstractAndUrl = [];
         // articles.forEach(article => {
         //     abstractAndUrl.push({
