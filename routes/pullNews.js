@@ -1,6 +1,6 @@
-const axios = require('axios');
-const NY_TIMES_API_KEY = 'L9wS3UQJeTPAD7ZUyum8BTR4RaKpGefV'
-const newsType = ['politics', 'science', 'world', 'business'];
+const axios = require("axios");
+const newsType = ["politics", "science", "world", "business"];
+const API_KEY = process.env.NYT_API;
 
 
 //Pull the stories from the specified categories
