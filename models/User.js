@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const connect = process.env.MONGODB_URI;
-console.log(connect);
+
 const Stat = require("./Stat");
 
 mongoose.connect(connect);
