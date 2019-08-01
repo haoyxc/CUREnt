@@ -4,11 +4,23 @@ const newsType = ['politics', 'science', 'world', 'business'];
 
 
 //Pull the stories from the specified categories
-axios.get(`https://api.nytimes.com/svc/topstories/v2/${newsType[0]}.json?api-key=${NY_TIMES_API_KEY}`)
-    .then(function(response){
-        // Top 20 stories
-        let articles = response.results.slice(0,20); 
-        let abstractAndUrl = [];
+async function getNews() {
+    try{
+        let response = await axios.get(`https://api.nytimes.com/svc/topstories/v2/${newsType[0]}.json?api-key=${NY_TIMES_API_KEY}`);
+        let articles = response.results
         console.log(articles);
+        // let abstractAndUrl = [];
+        // articles.forEach(article => {
+        //     abstractAndUrl.push({
+        //         abstract: article.abstract,
+        //         url: article.url
+        //     })
+        // })
+        // console.log(abstractAndUrl);
+    }
+    catch (err){
+        console.log(err);
+    }
+}
 
-    })
+getNews();
