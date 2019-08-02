@@ -180,3 +180,11 @@ hr {
 .answerBtn:focus {
   outline: none;
 }
+
+.correct-answer {
+	background-color: green;
+}
+
+.incorrect-answer {
+	background-color: red;
+}

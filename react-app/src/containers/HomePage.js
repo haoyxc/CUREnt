@@ -69,6 +69,7 @@ export default function HomePage() {
         }
       });
       response = await response.json();
+      console.log(response);
       setQuestions(response);
     } catch (err) {
       console.log(err);
@@ -103,7 +104,7 @@ export default function HomePage() {
         <button onClick={() => getWorldQuestions()}>World</button>
       </div>
       {questions.length ? (
-        <QuizCards allQuestions={questions} />
+        <QuizCards allQuestions={questions}/>
       ) : // <div>{questions[0].question}</div>
       null}
       <Stats user={parseJwt(localStorage.getItem("token")).username} />
