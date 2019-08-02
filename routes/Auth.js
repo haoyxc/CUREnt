@@ -58,26 +58,31 @@ module.exports = function(passport) {
 	router.post("/login", async (req, res) => {
 		const found = User.findOne({ username: req.body.username }, function(err, user) {
 			// if there's an error, finish trying to authenticate (auth failed)
-			if (err) {
-				console.log(err);
-			}
 			// if no user present, auth failed
-			if (!user) {
-				console.log(user);
+			if (err || !user) {
+				console.log(err);
+				return res.send({ success: false });
 			}
+
+			// if (!user) {
+			// 	console.log(user);
+			// 	res.send({ success: false });
+			// }
 
 			// if passwords do not match, auth failed
 			if (user.password !== hashPassword(req.body.password)) {
 				console.log("Passwords don't match");
+			} else {
+				return res.json({
+					token: jwt.sign({ username: user.username }, process.env.SECRET),
+					success: true,
+				});
 			}
 			// auth has has succeeded
 			// username = user.username;
 			// hashedPassword = user.password;
 			// console.log(user);
-			res.json({
-				token: jwt.sign({ username: user.username }, process.env.SECRET),
-				success: true,
-			});
+			res.send({ success: false });
 			return user;
 		});
 	});

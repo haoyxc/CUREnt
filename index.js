@@ -36,7 +36,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(newsRouter);
+<<<<<<< HEAD
+=======
 
+>>>>>>> 1b1da0f4447e84daadfb8eeb27e5172a266c6c7e
 
 // Passport stuff
 app.use(
