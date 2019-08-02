@@ -12,9 +12,12 @@ const mongoose = require("mongoose");
 const FacebookStrategy = require("passport-facebook");
 const TwitterStrategy = require("passport-twitter");
 const cors = require("cors");
+const jwt = require("jsonwebtoken");
 
 const User = require("./models/User");
 let app = express();
+
+// const token = jwt.sign({ _id:  }, 'shhhhh');
 
 const auth = require("./routes/Auth");
 const newsRouter = require("./routes/pullNews");
@@ -31,11 +34,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(session({ secret: process.env.SECRET }));
-<<<<<<< HEAD
-=======
 app.use(newsRouter);
->>>>>>> 34366ea1839212023a421e482ab36e678e0fb7d6
 app.use(cors());
 
 // Passport stuff
@@ -45,11 +44,12 @@ app.use(
 		resave: true,
 		saveUninitialized: true,
 		store: new MongoStore({ mongooseConnection: mongoose.connection }),
+		cookie: {
+			httpOnly: true,
+			secure: false,
+		},
 	})
 );
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 function hashPassword(password) {
 	let hash = crypto.createHash("sha256");
@@ -72,12 +72,12 @@ passport.use(
 		User.findOne({ username: username }, function(err, user) {
 			// if there's an error, finish trying to authenticate (auth failed)
 			if (err) {
-				console.log(err);
+				// console.log(err);
 				return done(err);
 			}
 			// if no user present, auth failed
 			if (!user) {
-				console.log(user);
+				// console.log(user);
 				return done(null, false);
 			}
 			// if passwords do not match, auth failed
@@ -90,13 +90,16 @@ passport.use(
 	})
 );
 
+// app.use(passport.initialize());
+// app.use(passport.session());
+
 const port = process.env.PORT || 5000;
 // app.get("/", (req, res) => {
 // 	res.send("hi233");
 // });
 
 // Routes
-app.get("/", (req, res) => res.send("hi"));
+// app.get("/", (req, res) => res.send("hi"));
 app.use("/", auth(passport));
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
