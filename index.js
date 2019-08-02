@@ -29,10 +29,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(session({ secret: process.env.SECRET }));
-
-// Middleware additions
-app.use("/", auth(passport));
+// app.use(session({ secret: process.env.SECRET }));
 
 // Passport stuff
 app.use(
@@ -43,6 +40,9 @@ app.use(
 		store: new MongoStore({ mongooseConnection: mongoose.connection }),
 	})
 );
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 function hashPassword(password) {
 	let hash = crypto.createHash("sha256");
@@ -83,8 +83,13 @@ passport.use(
 	})
 );
 
-const port = 5000;
+const port = 3000;
 // app.get("/", (req, res) => {
 // 	res.send("hi233");
 // });
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+// Routes
+app.use("/", auth(passport));
+
+module.exports = app;
