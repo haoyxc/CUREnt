@@ -11,25 +11,22 @@ const statSchema = new mongoose.Schema({
 		required: true,
 	},
 	accuracy: {
-		type: {
-			science: {
-				correct: Number,
-				total: Number,
-			},
-			world: {
-				correct: Number,
-				total: Number,
-			},
-			politics: {
-				correct: Number,
-				total: Number,
-			},
-			business: {
-				correct: Number,
-				total: Number,
-			},
+		science: {
+			correct: Number,
+			total: Number,
 		},
-		required: true,
+		world: {
+			correct: Number,
+			total: Number,
+		},
+		politics: {
+			correct: Number,
+			total: Number,
+		},
+		business: {
+			correct: Number,
+			total: Number,
+		},
 	},
 });
 
