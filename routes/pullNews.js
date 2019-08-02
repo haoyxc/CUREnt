@@ -20,7 +20,7 @@ async function getArticles(category) {
   }
 }
 
-function generateFunction(singleAbstract) {
+function generateQuestion(singleAbstract) {
   console.log("lol");
 }
 getArticles(newsType[0]);
