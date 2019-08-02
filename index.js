@@ -35,8 +35,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(newsRouter);
-app.use(statsRoute);
+// app.use(newsRouter);
+// app.use(statsRoute);
 
 // Passport stuff
 app.use(
@@ -102,6 +102,9 @@ const port = process.env.PORT || 5000;
 // Routes
 // app.get("/", (req, res) => res.send("hi"));
 app.use("/", auth(passport));
+app.use(newsRouter);
+app.use(statsRoute);
+// app.use(app.router);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 

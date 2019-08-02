@@ -14,10 +14,9 @@ export default function Stats({ user }) {
 	console.log(user);
 
 	const getStats = async () => {
-		console.log("we went in");
 		setShow(!show);
 		try {
-			const response = await fetch("http://localhost:5000/stats", {
+			const response = await fetch("http://localhost:5000/stats/" + user, {
 				method: "POST",
 				body: JSON.stringify({
 					username: user,
@@ -25,28 +24,49 @@ export default function Stats({ user }) {
 			});
 			const responseJSON = await response.json();
 			// We should expect the backend to populate the stats from the username
-			console.log(responseJSON);
-			setStats(responseJSON);
+			// console.log(responseJSON);
+			setStats(responseJSON.stats);
 		} catch (err) {
 			console.log("Something incorrect ocurred while getting stats", err, user);
 		}
 	};
-	console.log("we went in", show);
+
+	const findTotalPercent = () => {
+		if (stats.accuracy) {
+			const keys = Object.keys(stats.accuracy);
+			console.log(keys);
+			let correct = 0;
+			let total = 0;
+			for (let i = 0; i < 4; i++) {
+				correct += stats.accuracy[keys[i]].correct;
+				total += stats.accuracy[keys[i]].total;
+			}
+		}
+	};
+
+	const getPercentage = category => {
+		if (stats.accuracy) {
+			console.log(stats.accuracy[category]);
+			// return stats.accuracy[category].correct / stats.accuracy[category].total;
+		}
+	};
+
+	console.log(stats);
 	return (
 		<div>
 			<h1>Your Stats</h1>
 			<button onClick={() => getStats()}>Show your stats</button>
 			{show && (
 				<div>
-					{!stats ? (
+					{!findTotalPercent() ? (
 						<h2>You haven't completed a quiz yet. Take a quiz to see your stats!</h2>
 					) : (
 						<div>
 							<h3>Streak: {stats.streak}</h3>
-							<h3>Accuracy ({5}% Overall)</h3>
-							{["Business", "Politics", "Technology", "World"].map(x => (
+							<h3>Accuracy ({findTotalPercent()}% Overall)</h3>
+							{["business", "politics", "science", "world"].map(x => (
 								<h3>
-									{x}: {20}%
+									{x}: {getPercentage(x)}%
 								</h3>
 							))}
 						</div>
