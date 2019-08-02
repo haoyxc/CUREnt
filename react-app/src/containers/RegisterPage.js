@@ -35,7 +35,7 @@ export default function RegisterPage() {
 		if (username.length === 0) {
 			setErrorText('Please enter a valid username');
 		} else if (password.length < 4) {
-			setErrorText('Please input a password of at least length 8');
+			setErrorText('Please input a password of at least length 4');
 		} else if (password !== verifiedPassword) {
 			setErrorText('The passwords do not match');
 		} else {
@@ -47,10 +47,6 @@ export default function RegisterPage() {
 	};
 
 	const postSubmit = async () => {
-
-
-
-
 		const response = await fetch('http://localhost:5000/signup', {
 			method: 'POST',
 			headers: {
@@ -69,7 +65,22 @@ export default function RegisterPage() {
   };
   
   const postLogin = async () => {
-    
+    const response = await fetch('http://localhost:5000/login', {
+		method: 'POST',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			username: loginUsername,
+			password: loginPassword
+		})
+	});
+	const content = await response.json();
+	if (!content.success) {
+		console.log(content);
+		setErrorText('Wrong username or password');
+	}
   }
 
 	const flipCard = () => {
@@ -83,16 +94,24 @@ export default function RegisterPage() {
 				
 					<input type = "text" placeholder = "username" className="form-control mr-sm-2" value = {loginUsername} onChange={(e) => handleLoginUsername(e)}/>
 					<input type = "password" placeholder = "password" className="form-control mr-sm-2" value = {loginPassword} onChange={(e) => handleLoginPassword(e)}/>
-					<button onClick={() => postLogin()}>Login</button>
+					<button onClick={() => postLogin().catch(e => {setErrorText("Login request failed, please try again.")})}>Login</button>
 				
 			</nav>
 			<div className="flip-card">
 				<div className="flip-card-inner" style={flipStyle}>
 					<div className="flip-card-front">
-						<button onClick={() => flipCard()}>Switch card</button>
+						<h3>Question 1</h3>
+						<hr/>
+						<h4>The third round of Democratic presidential debates will take place in _______?</h4>
+						<div className="answerBlock">
+							<h5><button className = "emptyButton2" onClick={() => flipCard()}>A) New York</button></h5>
+							<h5><button className = "emptyButton2" onClick={() => flipCard()}>B) California</button></h5>
+							<h5><button className = "emptyButton2" onClick={() => flipCard()}>C) Oklahoma</button></h5>
+							<h5><button className = "emptyButton2" onClick={() => flipCard()}>D) Kyle's room</button></h5>
+						</div>
 					</div>
 					<div className="flip-card-back">
-						<h4>Register</h4>
+						<h3>Register to find out!</h3>
 						<p>{errorText}</p>
 						<input
 							type="text"
@@ -119,6 +138,7 @@ export default function RegisterPage() {
 					</div>
 				</div>
 			</div>
+			<p>Don't have an account? <button className="emptyButton" onClick={() => flipCard()}>Register.</button></p>
 		</div>
 	);
 }

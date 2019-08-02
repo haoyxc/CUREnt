@@ -33,9 +33,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(session({ secret: process.env.SECRET }));
 app.use(cors())
 
-// Middleware additions
-app.use("/", auth(passport));
-
 // Passport stuff
 app.use(
 	session({
