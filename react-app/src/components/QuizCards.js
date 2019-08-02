@@ -13,13 +13,13 @@ export default function QuizCards({ allQuestions }) {
 	}
 
 	return (
-		<div>
+		<div class="question-card-container">
 			{allArray.map(item => {
 				return (
 					<div className="card question-card" style={{ width: 500 }}>
 						<div className="card-body">
 							<h5 className="card-title">{item.question}</h5>
-							<form>
+							<form className="answerBlock">
 								{item.answerArray.map(ans => {
 									return (
 										<input type="button" className="answerBtn" value={ans} />
