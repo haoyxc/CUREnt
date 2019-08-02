@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
-import Quiz from "../components/Quiz";
+import React, {useState, useEffect} from "react";
+import { Redirect } from 'react-router-dom';
+import QuizCards from '../components/QuizCards'
+
 
 export default function HomePage() {
   const [questions, setQuestions] = useState([]);
@@ -98,8 +99,7 @@ export default function HomePage() {
         <Quiz questions={questions} />
       ) : // <div>{questions[0].question}</div>
       null}
-    </div>
-  );
+    </div>);
 }
 
 const styles = {

@@ -166,3 +166,17 @@ hr {
 #register-navbar {
   background-color: var(--primary-red) !important;
 }
+
+.answerBtn {
+  background-color: transparent;
+  display: block;
+  width: 70%;
+  margin-bottom: 10px;
+  border: 1px grey solid;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.answerBtn:focus {
+  outline: none;
+}
