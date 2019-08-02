@@ -3,6 +3,9 @@ const newsCategories = ["politics", "technology", "world", "business"];
 const API_KEY = process.env.NYT_API;
 const _ = require("underscore");
 
+const express = require("express");
+const router = express.Router();
+
 const country_list = require("../constants/country_list");
 const us_states_list = require("../constants/us_states_list");
 const company_list = require("../constants/company_list");
@@ -113,3 +116,23 @@ async function getAllQuestions() {
 // generateChoices("New Hampshire is cool", allLists);
 // getQuestionsByCategory(newsCategories[2]);
 getAllQuestions();
+
+router.get("/dailyEverything", (req, res) => {
+  let allQuestions = _.shuffle(getAllQuestions());
+  let allQuiz1 = {
+    questions: allQuestions.slice(0, 10),
+    date: new Date()
+  };
+  let allQuiz2 = {
+    questions: allQuestions.slice(10, 20),
+    date: new Date()
+  };
+});
+
+router.get("/quiz", (req, res) => {});
+
+router.get("/quiz/:category", (req, res) => {
+  let category = req.params.category;
+});
+
+module.exports = router;

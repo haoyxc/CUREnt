@@ -11,7 +11,7 @@ export default function RegisterPage() {
 	const [ verifiedPassword, setVerifiedPassword ] = useState('');
 	const [ errorText, setErrorText ] = useState('');
 	const [ flipStyle, setFlipStyle ] = useState({});
-	const [ loggedIn, setLogin ] = useState(false)
+	const [ loggedIn, setLogin ] = useState(false);
 
 	const handleUsername = (event) => {
 		setUsername(event.target.value);
@@ -90,12 +90,11 @@ export default function RegisterPage() {
 		setFlipStyle({ transform: `rotateY(180deg)` });
 	};
 
-	if(loggedIn){
-		return <Redirect to='/homepage' />
+	if (loggedIn) {
+		return <Redirect to="/homepage" />;
 	}
 
 	return (
-
 		<div className="register-container">
 			<nav className="navbar navbar-light bg-light">
 				<a className="navbar-brand">Navbar</a>
