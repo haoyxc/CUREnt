@@ -17,6 +17,7 @@ const User = require("./models/User");
 let app = express();
 
 const auth = require("./routes/Auth");
+const newsRouter = require("./routes/pullNews");
 
 // Ensure there is a pasword
 if (!process.env.SECRET) {
@@ -31,11 +32,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(session({ secret: process.env.SECRET }));
-<<<<<<< HEAD
-app.use(cors())
-=======
+app.use(newsRouter);
 app.use(cors());
->>>>>>> 1a167ca9aa1d7dbcb5755e8a7487b67bfdbcbea9
 
 // Passport stuff
 app.use(
@@ -93,9 +91,11 @@ const port = process.env.PORT || 5000;
 // app.get("/", (req, res) => {
 // 	res.send("hi233");
 // });
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 // Routes
+app.get("/", (req, res) => res.send("hi"));
 app.use("/", auth(passport));
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 module.exports = app;

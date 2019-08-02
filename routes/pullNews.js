@@ -3,6 +3,8 @@ const newsCategories = ["politics", "technology", "world", "business"];
 const API_KEY = process.env.NYT_API;
 const _ = require("underscore");
 
+const Quiz = require("../models/Quiz");
+
 const express = require("express");
 const router = express.Router();
 
@@ -106,10 +108,10 @@ async function getAllQuestions() {
   );
   questions = questions.flat();
 
-  console.log(questions.length);
+  //   console.log(questions.length);
   let uniqueQuestions = _.uniq(questions, "question");
-  console.log(uniqueQuestions.length);
-  console.log(uniqueQuestions);
+  //   console.log(uniqueQuestions.length);
+  //   console.log(uniqueQuestions);
   return uniqueQuestions;
 }
 // getArticles(newsCategories[3]);
@@ -117,22 +119,110 @@ async function getAllQuestions() {
 // getQuestionsByCategory(newsCategories[2]);
 getAllQuestions();
 
-router.get("/dailyEverything", (req, res) => {
-  let allQuestions = _.shuffle(getAllQuestions());
-  let allQuiz1 = {
-    questions: allQuestions.slice(0, 10),
+router.get("/dailyEverything", async (req, res) => {
+  console.log("daily everything");
+  let allQ = await getAllQuestions();
+
+  //   console.log(getAllQuestions());
+  let allQuestions = _.shuffle(allQ);
+  //   console.log(allQuestions);
+  console.log("SLICE", allQuestions.slice(0, 10));
+  let allQuiz1 = new Quiz({
+    questions: JSON.stringify(allQuestions.slice(0, 10)),
     date: new Date()
-  };
-  let allQuiz2 = {
-    questions: allQuestions.slice(10, 20),
+  });
+  let allQuiz2 = new Quiz({
+    questions: JSON.stringify(allQuestions.slice(10, 20)),
     date: new Date()
-  };
+  });
+  let allQuiz3 = new Quiz({
+    questions: JSON.stringify(allQuestions.slice(20, 30)),
+    date: new Date()
+  });
+
+  allQuiz1
+    .save()
+    .then(response => {
+      //   console.log("QUIZ!", response);
+      res.send(response);
+      console.log("saved allQuiz1");
+    })
+    .catch(e => {
+      console.log(e);
+    });
+
+  allQuiz2
+    .save()
+    .then(response => {
+      console.log("QUIZ2", response);
+      console.log("saved allQuiz2");
+    })
+    .catch(e => {
+      console.log(e);
+    });
+  allQuiz3
+    .save()
+    .then(response => {
+      //   console.log("QUIZ3", response);
+      console.log("saved allQuiz3");
+    })
+    .catch(e => {
+      console.log(e);
+    });
+
+  for (let i = 0; i < newsCategories.length; i++) {
+    let category = newsCategories[i];
+    let qs = await getQuestionsByCategory(category);
+    let categoryQuiz = new Quiz({
+      questions: JSON.stringify(qs),
+      date: new Date(),
+      category: category
+    });
+    categoryQuiz
+      .save()
+      .then(response => {
+        // console.log(response);
+        console.log("saved category quiz");
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
 });
 
-router.get("/quiz", (req, res) => {});
+router.get("/quiz", (req, res) => {
+  Quiz.find({ category: "all" })
+    .sort({ date: -1 })
+    .limit(3)
+    .exec()
+    .then(response => {
+      console.log(response);
+      console.log("getting all quizzes");
+
+      let responseParsed = response.map(quizItem => JSON.parse(quizItem.questions));
+      //sends 3 quizzes!!
+      res.send(responseParsed);
+    })
+    .catch(e => {
+      console.log(e);
+      res.send(e);
+    });
+});
 
 router.get("/quiz/:category", (req, res) => {
   let category = req.params.category;
+  Quiz.find({ category: category })
+    .sort({ date: -1 })
+    .exec()
+    .then(response => {
+      console.log(response, category);
+      //sends ONE quiz
+      res.send(JSON.parse(response[0].questions));
+    })
+    .catch(e => {
+      console.log(e);
+      res.send(e);
+    });
 });
 
 module.exports = router;
