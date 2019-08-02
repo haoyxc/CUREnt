@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Alegreya+Sans|Rock+Salt|Fira+Sans|Roboto&display=swap");
 :root {
-  --primary-blue: #7ecfc0;
-  --primary-light: #f2e3c9;
-  --primary-orange: #ec8f6a;
-  --primary-red: #ef4b4b;
+  --primary-blue: #a5dee5;
+  --primary-light: #e0f9b5;
+  --primary-orange: #ffd460;
+  --primary-red: #cabbe9;
 }
 body {
   margin: 0;
@@ -57,14 +57,14 @@ code {
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
   border-radius: 20px;
-  background-color: var(--primary-light);
+  background-color: var(--primary-blue);
   color: black;
 }
 
 /* Style the back side */
 .flip-card-back {
   border-radius: 20px;
-  background-color: var(--primary-light);
+  background-color: var(--primary-blue);
   transform: rotateY(180deg);
 }
 /* Card display */
@@ -88,7 +88,7 @@ button:focus {
 }
 .register-submit-btn {
   padding: 10px 20px;
-  background-color: var(--primary-orange);
+  background-color: var(--primary-light);
   border-radius: 20px;
 }
 .navbar {
@@ -164,7 +164,7 @@ hr {
   display: inline-block;
 }
 #register-navbar {
-  background-color: var(--primary-blue) !important;
+  background-color: var(--primary-red) !important;
 }
 
 .answerBtn {
