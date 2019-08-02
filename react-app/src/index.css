@@ -118,7 +118,14 @@ button:focus {
 }
 .home-navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+}
+.logout-btn {
+  color: white;
+}
+.logout-btn:hover {
+  text-decoration: none;
+  color: black;
 }
 .navbar-brand.header-logo {
   text-align: center;
