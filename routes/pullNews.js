@@ -3,6 +3,7 @@ const newsType = ["politics", "science", "world", "business"];
 const API_KEY = process.env.NYT_API;
 
 const people = require("../constants/people");
+const county_list = require("../constants/country_list");
 
 async function getArticles(category) {
   try {
@@ -23,6 +24,13 @@ async function getArticles(category) {
 }
 
 function generateQuestion(singleAbstract) {
+  let abstract = singleAbstract.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
+//   let words = abstract.split(" ");
+if (countries_list.some(substring=>abstract.includes(substring))){
+    //the abstract has a country
+}
+
+  words.forEach(word => )
   console.log("lol");
 }
 getArticles(newsType[0]);
