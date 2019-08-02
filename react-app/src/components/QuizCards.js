@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function QuizCards({ allQuestions }) {
-	let [numRight, setNumRight] = useState(0)
-	let [started, setStarted] = useState(false);
+	// let [numRight, setNumRight] = useState(0)
+	let numRight = 0;
+	let [finished, setFinished] = useState(false);
 	let allArray = [];
 	for (let i = 0; i < 10; i++) {
 		let ansArray = [ allQuestions[i].correctAnswer ];
@@ -29,7 +30,7 @@ export default function QuizCards({ allQuestions }) {
                     allArray[i].answered = true;	
 					if (allQuestions[i].correctAnswer === ans) {
 						console.log("h");
-                        
+                        numRight++;
 						event.target.classList.add('correct-answer');	
 					} else {
 						console.log('hf')
@@ -41,12 +42,18 @@ export default function QuizCards({ allQuestions }) {
 	};
 
 	const submitQuiz = () => {
+		setFinished(true);
+	}
 
+	const tryAgain = () => {
+		setFinished(false);
 	}
 
 	return (
 		<div className="question-card-container">
-			{allArray.map((item) => {
+			{finished ? <div><h2>Nice run! Click below to try again.</h2>
+			<button onClick={() => tryAgain()}>Try again?</button>
+			</div>: <div>{allArray.map((item) => {
 				return (
 					<div className="card question-card" style={{ width: 500 }}>
 						<div className="card-body">
@@ -68,6 +75,9 @@ export default function QuizCards({ allQuestions }) {
 				);
 			})}
 			<button onClick={()=> submitQuiz()}>Submit Quiz!</button>
+			</div>}
+			
+			
 		</div>
 	);
 }
