@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 // import Quiz from "../components/Quiz";
 import QuizCards from "../components/QuizCards";
 import Stats from "../components/Stats";
+import QuizCardsPlaceholder from "../components/QuizCardsPlaceholder";
 
 const parseJwt = token => {
   console.log(token, typeof token);
@@ -95,29 +96,20 @@ export default function HomePage() {
     <div>
       <h1>HomePage</h1>
 
-      <div style={{ display: "flex", flexDirection: "row" }}>
-        <div style={{ flex: 1, margin: 20 }}>
-          <button style={{ display: "block" }} onClick={() => getAllQuestions()}>
-            Everything
-          </button>
-          <button style={{ display: "block" }} onClick={() => getBusinessQuestions()}>
-            Business
-          </button>
-          <button style={{ display: "block" }} onClick={() => getTechQuestions()}>
-            Technology
-          </button>
-          <button style={{ display: "block" }} onClick={() => getPoliticsQuestions()}>
-            Politics
-          </button>
-          <button style={{ display: "block" }} onClick={() => getWorldQuestions()}>
-            World
-          </button>
+      <div className="homepage-container">
+        <div className="homepage-btns">
+          <button onClick={() => getAllQuestions()}>Everything</button>
+          <button onClick={() => getBusinessQuestions()}>Business</button>
+          <button onClick={() => getTechQuestions()}>Technology</button>
+          <button onClick={() => getPoliticsQuestions()}>Politics</button>
+          <button onClick={() => getWorldQuestions()}>World</button>
         </div>
 
         {questions.length ? (
           <QuizCards style={{ flex: 1, margin: 20 }} allQuestions={questions} />
-        ) : // <div>{questions[0].question}</div>
-        null}
+        ) : (
+          <QuizCardsPlaceholder />
+        )}
 
         <Stats
           style={{ flex: 1, marginRight: 20 }}
