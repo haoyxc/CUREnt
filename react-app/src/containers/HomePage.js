@@ -107,7 +107,9 @@ export default function HomePage() {
         </div>
 
         {questions.length ? (
-          <QuizCards style={{ flex: 1, margin: 20 }} allQuestions={questions} />
+          <QuizCards style={{ flex: 1, margin: 20 }} 
+          user={parseJwt(localStorage.getItem("token")).username}
+          allQuestions={questions} />
         ) : (
           <QuizCardsPlaceholder />
         )}

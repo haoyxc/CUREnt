@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-export default function QuizCards({ allQuestions }) {
+export default function QuizCards({ allQuestions, user }) {
 	// let [numRight, setNumRight] = useState(0)
 	let numRight = 0;
 	let [finished, setFinished] = useState(false);
@@ -29,10 +29,13 @@ export default function QuizCards({ allQuestions }) {
 				if (allQuestions[i].question === ques) {	
                     allArray[i].answered = true;	
 					if (allQuestions[i].correctAnswer === ans) {
+
+						postGuess("true", "business").catch(e => {console.log(e)})
 						console.log("h");
                         numRight++;
 						event.target.classList.add('correct-answer');	
 					} else {
+						postGuess("false", "business").catch(e => {console.log(e)})
 						console.log('hf')
 						event.target.classList.add('incorrect-answer');	
 					}
@@ -40,6 +43,21 @@ export default function QuizCards({ allQuestions }) {
             }	
 		}	
 	};
+
+	const postGuess = async (guess, type) => {
+		const response = await fetch("http://localhost:5000/stats/new/" + user + "/" + guess + "/" + type, {
+		  method: "POST",
+		  headers: {
+			"Content-Type": "application/json"
+		  },
+		  body: JSON.stringify({
+			correct: guess,
+			category: type,
+		  })
+		});
+		const content = await response.json();
+		console.log(content);
+	  };
 
 	const submitQuiz = () => {
 		setFinished(true);
