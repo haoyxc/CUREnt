@@ -30,15 +30,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-<<<<<<< HEAD
 app.use(session({ secret: process.env.SECRET }));
 app.use(cors())
 
 // Middleware additions
 app.use("/", auth(passport));
-=======
-// app.use(session({ secret: process.env.SECRET }));
->>>>>>> 9b9ebf55f697224664be6d83941d418b407e688f
 
 // Passport stuff
 app.use(
@@ -50,11 +46,8 @@ app.use(
 	})
 );
 
-<<<<<<< HEAD
-=======
 app.use(passport.initialize());
 app.use(passport.session());
->>>>>>> 9b9ebf55f697224664be6d83941d418b407e688f
 
 function hashPassword(password) {
 	let hash = crypto.createHash("sha256");
@@ -95,7 +88,7 @@ passport.use(
 	})
 );
 
-const port = 3000;
+const port = 5000;
 // app.get("/", (req, res) => {
 // 	res.send("hi233");
 // });
