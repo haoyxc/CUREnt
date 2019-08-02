@@ -1,4 +1,8 @@
 :root {
+  --primary-blue: #7ecfc0;
+  --primary-light: #f2e3c9;
+  --primary-orange: #ec8f6a;
+  --primary-red: #ef4b4b;
 }
 body {
   margin: 0;
@@ -115,6 +119,7 @@ hr {
   text-align: left;
 }
 
+<<<<<<< HEAD
 
 .answerBlock button {
   margin-top: 12px;
@@ -130,3 +135,8 @@ hr {
   width: 35%;
   display: inline-block;
 }
+=======
+.answerBlock button {
+  margin-top: 12px;
+}
+>>>>>>> haoyxc
