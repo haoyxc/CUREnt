@@ -124,7 +124,7 @@ const people = [
   "Bill de Blasio",
   "Julián Castro",
   "Castro",
-  
+
   // Picked out: Business
   "Brian Grazer",
   "Ron Howard",
@@ -147,7 +147,7 @@ const people = [
   "Walsh",
   "Alison Grace Martin",
   "Renee Holland",
-  
+
   // Picked out: World
   "Abdoulie Barry",
   "Osama bin Laden",
@@ -161,8 +161,6 @@ const people = [
   "Mahmoud Afif Abdeljalil",
   "Hal Prince",
   "Mashrou’ Leila"
-
-
 ];
 
-export default people;
+module.exports = people;
