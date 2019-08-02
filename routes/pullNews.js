@@ -117,7 +117,17 @@ async function getAllQuestions() {
 // getQuestionsByCategory(newsCategories[2]);
 getAllQuestions();
 
-router.get("/everything", (req, res) => {});
+router.get("/dailyEverything", (req, res) => {
+  let allQuestions = _.shuffle(getAllQuestions());
+  let allQuiz1 = {
+    questions: allQuestions.slice(0, 10),
+    date: new Date()
+  };
+  let allQuiz2 = {
+    questions: allQuestions.slice(10, 20),
+    date: new Date()
+  };
+});
 
 router.get("/quiz", (req, res) => {});
 
