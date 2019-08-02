@@ -83,7 +83,9 @@ export default function QuizCards({ allQuestions }) {
               </div>
             );
           })}
-          <button onClick={() => submitQuiz()}>Submit Quiz!</button>
+          <button onClick={() => submitQuiz()} className="submit-quiz-btn">
+            Submit Quiz!
+          </button>
         </div>
       )}
     </div>
