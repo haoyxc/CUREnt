@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from "react";
-import { Redirect } from 'react-router-dom';
-import QuizCards from '../components/QuizCards'
-
+import React, { useState, useEffect } from "react";
+import { Redirect } from "react-router-dom";
+import QuizCards from "../components/QuizCards";
 
 export default function HomePage() {
   const [questions, setQuestions] = useState([]);
@@ -84,28 +83,31 @@ export default function HomePage() {
   };
 
   return (
-    <div>
+    <div className="homepage-container">
       <h1>HomePage</h1>
-      <div style={styles.row}>
+      <div style={styles.row} className="homepage-btns">
         <button onClick={() => getAllQuestions()}>Everything</button>
         <button onClick={() => getBusinessQuestions()}>Business</button>
         <button onClick={() => getTechQuestions()}>Technology</button>
-      </div>
-      <div style={styles.row}>
+        {/* </div>
+      <div style={styles.row}> */}
         <button onClick={() => getPoliticsQuestions()}>Politics</button>
         <button onClick={() => getWorldQuestions()}>World</button>
       </div>
-      {questions.length ? (
-        <Quiz questions={questions} />
-      ) : // <div>{questions[0].question}</div>
-      null}
-    </div>);
+      <div className="question-cards">
+        {questions.length ? (
+          <QuizCards allQuestions={questions} />
+        ) : // <div>{questions[0].question}</div>
+        null}
+      </div>
+    </div>
+  );
 }
 
 const styles = {
   row: {
     flex: 1,
-    alignItems: "center"
+    justifyContent: "center"
   },
   catSel: {
     height: 50,
