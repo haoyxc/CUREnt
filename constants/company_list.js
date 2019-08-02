@@ -7,7 +7,32 @@ const company_list = [
   "Facebook",
   "Samsung",
   "Alphabet",
-  "Zhongwang Holdings"
+  "Zhongwang Holdings Limited",
+  "Al Qaeda",
+  "DoorDash",
+  "Microsoft",
+  "Twitch",
+  "DeepMind",
+  "Huawei",
+  "Lyft",
+  "Sprint",
+  "T-Mobile",
+  "New York Times",
+  "FX",
+  "WeWork",
+  "Bytedance",
+  "F.B.I.",
+  "CNN",
+  "Universal",
+  "Federal Reserve",
+  "Vision Property Management",
+  "Twitter",
+  "Apollo Global Management",
+  "McKinsey",
+  "London Stock Exchange",
+  "Lululemon",
+  "Federal Aviation Administration",
+
 ];
 
 module.exports = company_list;

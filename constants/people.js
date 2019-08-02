@@ -1,66 +1,5 @@
 const people = [
   //Presidents
-  "Abdelaziz Bouteflika",
-  "Abdelkader Bensalah",
-  "Ahmed Ouyahia",
-  "Noureddine Bedoui",
-  "João Lourenço",
-  "Patrice Talon",
-  "Mokgweetsi Masisi",
-  "Roch Marc Christian Kaboré",
-  "Paul Kaba Thieba",
-  "Christophe Joseph Marie Dabiré",
-  "Pierre Nkurunziza",
-  "Paul Biya",
-  "Philémon Yang",
-  "Joseph Ngute",
-  "Jorge Carlos Fonseca",
-  "Ulisses Correia e Silva",
-  "Faustin-Archange Touadéra",
-  "Simplice Sarandji",
-  "Firmin Ngrébada",
-  "Idriss Déby",
-  "Azali Assoumani",
-  "Moustadroine Abdou",
-  "Denis Sassou Nguesso",
-  "Clément Mouamba",
-  "Joseph Kabila",
-  "Félix Tshisekedi",
-  "Bruno Tshibala",
-  "Sylvestre Ilunga",
-  "Ismaïl Omar Guelleh",
-  "Abdoulkader Kamil Mohamed",
-  "Abdel Fattah el-Sisi",
-  "Moustafa Madbouly",
-  "Teodoro Obiang Nguema Mbasogo",
-  "Francisco Pascual Obama Asue",
-  "Isaias Afwerki",
-  "Mswati III",
-  "Mandvulo Ambrose Dlamini",
-  "Sahle-Work Zewde",
-  "Abiy Ahmed",
-  "Ali Bongo Ondimba",
-  "Emmanuel Issoze-Ngondet",
-  "Julien Nkoghe Bekale",
-  "Adama Barrow",
-  "Nana Akufo-Addo",
-  "Alpha Condé",
-  "Ibrahima Kassory Fofana",
-  "José Mário Vaz",
-  "Cipriano Cassamá",
-  "Aristides Gomes",
-  "Alassane Ouattara",
-  "Amadou Gon Coulibaly",
-  "Uhuru Kenyatta",
-  "Letsie III",
-  "Tom Thabane",
-  "George Weah",
-  "Aguila Saleh Issa",
-  "Abdullah al-Thani",
-  "Fayez al-Sarraj",
-  "Rivo Rakotovao",
-  "Andry Rajoelina",
-  "Christian Ntsay",
   "Peter Mutharika",
   "Ibrahim Boubacar Keïta",
   "Soumeylou Boubèye Maïga",
@@ -185,7 +124,7 @@ const people = [
   "Bill de Blasio",
   "Julián Castro",
   "Castro",
-  
+
   // Picked out: Business
   "Brian Grazer",
   "Ron Howard",
@@ -208,7 +147,7 @@ const people = [
   "Walsh",
   "Alison Grace Martin",
   "Renee Holland",
-  
+
   // Picked out: World
   "Abdoulie Barry",
   "Osama bin Laden",
@@ -222,8 +161,6 @@ const people = [
   "Mahmoud Afif Abdeljalil",
   "Hal Prince",
   "Mashrou’ Leila"
-
-
 ];
 
-export default people;
+module.exports = people;
