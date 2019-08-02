@@ -4,6 +4,7 @@ import { Redirect } from "react-router-dom";
 import QuizCards from "../components/QuizCards";
 import Stats from "../components/Stats";
 import QuizCardsPlaceholder from "../components/QuizCardsPlaceholder";
+import Header from "../components/Header";
 
 const parseJwt = token => {
   console.log(token, typeof token);
@@ -93,9 +94,33 @@ export default function HomePage() {
     }
   };
 
+  async function intervalFunction() {
+    let date = new Date();
+    if (date.getHours() === 8) {
+      try {
+        let response = await fetch("http://localhost:5000/dailyEverything", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }
+
+  useEffect(() => {
+    intervalFunction();
+    let interval = setInterval(intervalFunction, 3600000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
     <div>
-      <h1>HomePage</h1>
+      <Header />
 
       <div className="homepage-container">
         <div className="homepage-btns">
