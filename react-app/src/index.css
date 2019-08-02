@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Alegreya+Sans|Rock+Salt|Fira+Sans|Roboto&display=swap");
 :root {
-  --primary-blue: #7ecfc0;
-  --primary-light: #f2e3c9;
-  --primary-orange: #ec8f6a;
-  --primary-red: #ef4b4b;
+	--primary-blue: #7ecfc0;
+	--primary-light: #f2e3c9;
+	--primary-orange: #ec8f6a;
+	--primary-red: #ef4b4b;
 }
 body {
   margin: 0;
@@ -14,30 +14,30 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 .register-container {
-  text-align: center;
+	text-align: center;
 }
 
 .flip-card {
-  display: inline-block;
-  background-color: transparent;
-  width: 700px;
-  height: 400px;
-  perspective: 1000px;
-  margin-top: 45px;
+	display: inline-block;
+	background-color: transparent;
+	width: 700px;
+	height: 400px;
+	perspective: 1000px;
+	margin-top: 45px;
 }
 
 /* This container is needed to position the front and back side */
 .flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	transition: transform 0.8s;
+	transform-style: preserve-3d;
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
@@ -48,10 +48,10 @@ code {
 /* Position the front and back side */
 .flip-card-front,
 .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
 }
 
 /* Style the front side (fallback if image is missing) */
@@ -92,7 +92,7 @@ button:focus {
   border-radius: 20px;
 }
 .navbar {
-  position: relative;
+	position: relative;
 }
 .header-logo {
   color: white;
@@ -101,67 +101,72 @@ button:focus {
   font-family: "Rock Salt", cursive;
 }
 .brand {
-  position: absolute;
-  left: 50%;
-  margin-left: -50px !important; /* 50% of your logo width */
-  display: block;
+	position: absolute;
+	left: 50%;
+	margin-left: -50px !important; /* 50% of your logo width */
+	display: block;
 }
 
 .emptyButton {
-  padding: 0;
-  border: none;
-  background: none;
-  color: dodgerblue;
+	padding: 0;
+	border: none;
+	background: none;
+	color: dodgerblue;
 }
 
 .emptyButton2 {
-  padding: 0;
-  border: none;
-  background: none;
-  margin-left: 25px;
+	padding: 0;
+	border: none;
+	background: none;
+	margin-left: 25px;
 }
 
 .emptyButton:focus {
-  outline: none;
+	outline: none;
 }
 
 .emptyButton2:focus {
-  outline: none;
+	outline: none;
 }
 
 div > h3 {
-  margin-top: 15px;
+	margin-top: 15px;
 }
 
 hr {
-  width: 80%;
-  border: 0;
-  height: 1px;
-  background-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.75),
-    rgba(0, 0, 0, 0)
-  );
+	width: 80%;
+	border: 0;
+	height: 1px;
+	background-image: linear-gradient(
+		to right,
+		rgba(0, 0, 0, 0),
+		rgba(0, 0, 0, 0.75),
+		rgba(0, 0, 0, 0)
+	);
 }
 
 .answerBlock {
-  text-align: left;
+	text-align: left;
 }
 
 .answerBlock button {
-  margin-top: 12px;
+	margin-top: 12px;
 }
 
 .flip-card-back input {
-  width: 60%;
-  display: inline-block;
-  margin-bottom: 30px;
+	width: 60%;
+	display: inline-block;
+	margin-bottom: 30px;
 }
 
 .navbar input {
+<<<<<<< HEAD
+	width: 35%;
+	display: inline-block;
+=======
   width: 35%;
   display: inline-block;
+>>>>>>> 074e177bda5afc4e3e52937953e167b47dc210eb
 }
 #register-navbar {
   background-color: var(--primary-blue) !important;

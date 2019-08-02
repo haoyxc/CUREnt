@@ -77,10 +77,11 @@ export default function RegisterPage() {
       })
     });
     const content = await response.json();
-    console.log(response);
+    console.log(content);
     if (!content.success) {
       setErrorText("Wrong username or password");
     } else {
+      localStorage.setItem("token", content.token);
       setLogin(true);
     }
   };
@@ -95,10 +96,8 @@ export default function RegisterPage() {
 
   return (
     <div className="register-container">
-      <nav className="navbar navbar-light bg-light" id="register-navbar">
-        <a className="navbar-brand" x>
-          <h3 className="header-logo">CUREnt.</h3>
-        </a>
+      <nav className="navbar navbar-light bg-light" style={{ backgroundColor: "green" }}>
+        <a className="navbar-brand">N_ws Something</a>
         <div className="login-wrapper">
           <input
             type="text"
@@ -115,7 +114,6 @@ export default function RegisterPage() {
             onChange={e => handleLoginPassword(e)}
           />
           <button
-            className="login-btn"
             onClick={() =>
               postLogin().catch(e => {
                 setErrorText("Login request failed, please try again.");
@@ -129,9 +127,9 @@ export default function RegisterPage() {
       <div className="flip-card">
         <div className="flip-card-inner" style={flipStyle}>
           <div className="flip-card-front">
-            <h3 className="question-header">Question 1</h3>
+            <h3>Question 1</h3>
             <hr />
-            <h4 className="question-content">
+            <h4>
               The third round of Democratic presidential debates will take place in
               _______?
             </h4>
@@ -184,9 +182,7 @@ export default function RegisterPage() {
               onChange={e => handleVerifiedPassword(e)}
             />
             <br />
-            <button onClick={() => submitData()} className="register-submit-btn">
-              Submit
-            </button>
+            <button onClick={() => submitData()}>Submit</button>
           </div>
         </div>
       </div>
