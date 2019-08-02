@@ -1,14 +1,15 @@
 const mongoose = require("mongoose");
 
 const quizSchema = new mongoose.Schema({
-  questions: [
-    {
-      question: String,
-      correctAnswer: String,
-      wrongAnswers: [String],
-      sourceLink: String
-    }
-  ],
+  questions: String,
+  //   questions: [
+  //     {
+  //       question: String,
+  //       correctAnswer: String,
+  //       wrongAnswers: [String],
+  //       sourceLink: String
+  //     }
+  //   ],
   date: Date,
   category: {
     type: String,
