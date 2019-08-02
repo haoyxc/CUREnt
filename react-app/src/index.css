@@ -55,16 +55,16 @@ code {
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  border-radius: 20px;
-  background-color: #eeeeee;
-  color: black;
+	border-radius: 20px;
+	background-color: #eeeeee;
+	color: black;
 }
 
 /* Style the back side */
 .flip-card-back {
-  border-radius: 20px;
-  background-color: #eeeeee;
-  transform: rotateY(180deg);
+	border-radius: 20px;
+	background-color: #eeeeee;
+	transform: rotateY(180deg);
 }
 
 .navbar {
@@ -130,11 +130,6 @@ hr {
 }
 
 .navbar input {
-<<<<<<< HEAD
 	width: 35%;
 	display: inline-block;
-=======
-  width: 35%;
-  display: inline-block;
->>>>>>> 074e177bda5afc4e3e52937953e167b47dc210eb
 }
