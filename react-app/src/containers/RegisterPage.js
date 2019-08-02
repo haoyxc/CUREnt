@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Redirect } from 'react-router-dom';
-import Axios from 'axios';
+import axios from 'axios';
 
 export default function RegisterPage() {
 	const [ username, setUsername ] = useState('');
@@ -66,23 +66,36 @@ export default function RegisterPage() {
 	};
 
 	const postLogin = async () => {
-		const response = await fetch('http://localhost:5000/login', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
+		axios({
+			method: 'post',
+			url: 'http://localhost:5000/login',
+			data: {
 				username: loginUsername,
 				password: loginPassword
-			})
-		});
-		const content = await response.json();
-		console.log(response)
-		if (!content.success) {
-			setErrorText('Wrong username or password');
-		} else {
-			setLogin(true);
-		}
+			}
+		})
+		.then(function(response) {
+			console.log(response);
+		})
+		.catch(err => {console.log(err)} )
+
+		// const response = await fetch('http://localhost:5000/login', {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		'Content-Type': 'application/json'
+		// 	},
+		// 	body: JSON.stringify({
+		// 		username: loginUsername,
+		// 		password: loginPassword
+		// 	})
+		// });
+		// const content = await response.json();
+		// console.log(response)
+		// if (!content.success) {
+		// 	setErrorText('Wrong username or password');
+		// } else {
+		// 	setLogin(true);
+		// }
 	};
 
 	const flipCard = () => {

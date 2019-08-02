@@ -40,6 +40,7 @@ module.exports = function(passport) {
 	);
 
 	router.get("/user", (req, res) => {
+		console.log("THERE SHE IS", req.user);
 		if (req.user) {
 			res.send({ loggedIn: true });
 		} else {
