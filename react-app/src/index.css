@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Alegreya+Sans|Rock+Salt|Fira+Sans|Roboto&display=swap");
 :root {
 	--primary-blue: #7ecfc0;
 	--primary-light: #f2e3c9;
@@ -6,8 +7,8 @@
 }
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-		"Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+	font-family: "Fira Sans", "Alegreya Sans", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+		"Droid Sans", "Helvetica Neue", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -56,19 +57,48 @@ code {
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
 	border-radius: 20px;
-	background-color: #eeeeee;
+	background-color: var(--primary-light);
 	color: black;
 }
 
 /* Style the back side */
 .flip-card-back {
 	border-radius: 20px;
-	background-color: #eeeeee;
+	background-color: var(--primary-light);
 	transform: rotateY(180deg);
 }
-
+/* Card display */
+.question-header {
+	font-weight: bold;
+}
+.question-content {
+	/* font-family: "Fira Sans", sans-serif; */
+}
+/* Card display end */
+button.login-btn {
+	background-color: var(--primary-light);
+	border-radius: 10px;
+	padding: 5px 10px;
+}
+button:active {
+	transform: scale(0.95);
+}
+button:focus {
+	outline: none;
+}
+.register-submit-btn {
+	padding: 10px 20px;
+	background-color: var(--primary-orange);
+	border-radius: 20px;
+}
 .navbar {
 	position: relative;
+}
+.header-logo {
+	color: white;
+	size: 1.5rem;
+	font-weight: bold;
+	font-family: "Rock Salt", cursive;
 }
 .brand {
 	position: absolute;
@@ -132,4 +162,7 @@ hr {
 .navbar input {
 	width: 35%;
 	display: inline-block;
+}
+#register-navbar {
+	background-color: var(--primary-blue) !important;
 }
