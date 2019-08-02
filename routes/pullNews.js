@@ -138,6 +138,7 @@ router.get("/dailyEverything", (req, res) => {
     .save()
     .then(response => {
       console.log(response);
+      res.send(response);
       console.log("saved allQuiz1");
     })
     .catch(e => {
