@@ -97,10 +97,11 @@ export default function RegisterPage() {
   return (
     <div className="register-container">
       <nav className="navbar navbar-light bg-light" id="register-navbar">
-        <a className="navbar-brand" className="header-logo">
-          CURent.
+        <div className="navbar-child" />
+        <a className="navbar-brand" className="header-logo navbar-child">
+          CUREnt.
         </a>
-        <div className="login-wrapper">
+        <div className="login-wrapper navbar-child">
           <input
             type="text"
             placeholder="username"

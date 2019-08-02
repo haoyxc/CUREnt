@@ -106,9 +106,12 @@ button:focus {
 }
 .header-logo {
   color: white;
-  size: 1.5rem;
-  font-weight: bold;
+  size: 1.8rem;
+  font-weight: bolder;
   font-family: "Rock Salt", cursive;
+}
+.navbar-child {
+  flex: 1;
 }
 .brand {
   position: absolute;
