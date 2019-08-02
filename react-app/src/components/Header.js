@@ -5,7 +5,7 @@ export default function Header() {
   return (
     <div>
       <nav className="navbar navbar-light bg-light home-navbar">
-        <a className="navbar-brand header-logo">Navbar</a>
+        <a className="navbar-brand header-logo">CUREnt.</a>
       </nav>
     </div>
   );

@@ -22,13 +22,10 @@ async function getArticles(category) {
       `https://api.nytimes.com/svc/topstories/v2/${category}.json?api-key=${API_KEY}`
     );
     let articles = resp.data.results;
-    // articles = articles.slice(0, 20);
-
     let abstracts = articles.map(article => ({
       abstract: article.abstract,
       url: article.url
     }));
-    // console.log(abstracts);
     return abstracts;
   } catch (e) {
     console.log(e);
@@ -49,11 +46,9 @@ function generateChoices(singleAbstract, allLists) {
   }
   if (match && matchList) {
     let { matchWord, choices } = checker(abstract, matchList);
-    // console.log(matchWord, choices);
     return { matchWord, choices };
   } else {
     //returns falsey value if there is no match
-    // console.log("no match");
     return null;
   }
 }
@@ -82,7 +77,6 @@ async function getQuestionsByCategory(category) {
   let questions = [];
 
   let abstracts = await getArticles(category);
-  //   console.log(abstracts);
   abstracts.forEach(item => {
     let generatedChoices = generateChoices(item.abstract, allLists);
     if (generatedChoices) {
@@ -110,14 +104,9 @@ async function getAllQuestions() {
 
   //   console.log(questions.length);
   let uniqueQuestions = _.uniq(questions, "question");
-  //   console.log(uniqueQuestions.length);
-  //   console.log(uniqueQuestions);
+
   return uniqueQuestions;
 }
-// getArticles(newsCategories[3]);
-// generateChoices("New Hampshire is cool", allLists);
-// getQuestionsByCategory(newsCategories[2]);
-getAllQuestions();
 
 router.get("/dailyEverything", async (req, res) => {
   console.log("daily everything");
@@ -154,7 +143,7 @@ router.get("/dailyEverything", async (req, res) => {
   allQuiz2
     .save()
     .then(response => {
-      console.log("QUIZ2", response);
+      // console.log("QUIZ2", response);
       console.log("saved allQuiz2");
     })
     .catch(e => {
@@ -182,7 +171,7 @@ router.get("/dailyEverything", async (req, res) => {
       .save()
       .then(response => {
         // console.log(response);
-        console.log("saved category quiz");
+        // console.log("saved category quiz");
       })
       .catch(e => {
         console.log(e);
@@ -196,8 +185,8 @@ router.get("/quiz", (req, res) => {
     .limit(3)
     .exec()
     .then(response => {
-      console.log(response);
-      console.log("getting all quizzes");
+      // console.log(response);
+      // console.log("getting all quizzes");
 
       let responseParsed = response.map(quizItem => JSON.parse(quizItem.questions));
       //sends 3 quizzes!!
@@ -215,7 +204,7 @@ router.get("/quiz/:category", (req, res) => {
     .sort({ date: -1 })
     .exec()
     .then(response => {
-      console.log(response, category);
+      // console.log(response, category);
       //sends ONE quiz
       res.send(JSON.parse(response[0].questions));
     })
