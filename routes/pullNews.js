@@ -3,6 +3,9 @@ const newsCategories = ["politics", "technology", "world", "business"];
 const API_KEY = process.env.NYT_API;
 const _ = require("underscore");
 
+const express = require("express");
+const router = express.Router();
+
 const country_list = require("../constants/country_list");
 const us_states_list = require("../constants/us_states_list");
 const company_list = require("../constants/company_list");
