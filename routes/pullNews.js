@@ -13,7 +13,7 @@ const us_states_list = require("../constants/us_states_list");
 const company_list = require("../constants/company_list");
 const people = require("../constants/people");
 
-let allLists = [people, company_list, us_states_list, country_list];
+let allLists = [people, us_states_list, country_list, company_list];
 
 //get all articles
 async function getArticles(category) {
