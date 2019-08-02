@@ -17,6 +17,7 @@ const User = require("./models/User");
 let app = express();
 
 const auth = require("./routes/Auth");
+const newsRouter = require("./routes/pullNews");
 
 // Ensure there is a pasword
 if (!process.env.SECRET) {
@@ -31,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(session({ secret: process.env.SECRET }));
+app.use(newsRouter);
 app.use(cors());
 
 // Passport stuff
