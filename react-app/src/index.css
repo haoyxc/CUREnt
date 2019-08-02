@@ -274,7 +274,8 @@ input.answerBtn:hover {
   font-size: 2rem;
   font-style: italic;
 }
-.submit-quiz-btn {
+.submit-quiz-btn,
+.tryagain-btn {
   margin-top: 10px;
   padding: 8px 12px;
   border-radius: 10px;
@@ -285,7 +286,19 @@ input.answerBtn:hover {
   color: white;
   background-color: var(--primary-blue);
 }
-
+.tryagain-btn {
+  border-radius: 15px;
+  padding: 10px 15px;
+  color: var(--primary-blue);
+  font-weight: bold;
+}
+.tryagain-btn:hover {
+  color: white;
+  background-color: var(--primary-blue);
+}
+.try-again-img {
+  width: 400px;
+}
 /* End of homepage */
 /* Stats component */
 .stats-container {

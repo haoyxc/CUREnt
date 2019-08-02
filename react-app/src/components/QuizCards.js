@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import img from "../imgs/trump3.png";
 
 export default function QuizCards({ allQuestions }) {
   // let [numRight, setNumRight] = useState(0)
@@ -58,7 +59,10 @@ export default function QuizCards({ allQuestions }) {
       {finished ? (
         <div>
           <h2>Nice run! Click below to try again.</h2>
-          <button onClick={() => tryAgain()}>Try again?</button>
+          <button onClick={() => tryAgain()} className="tryagain-btn">
+            Try again?
+          </button>
+          <img src={img} alt="" className="try-again-img" />
         </div>
       ) : (
         <div>
