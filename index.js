@@ -31,7 +31,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(session({ secret: process.env.SECRET }));
+<<<<<<< HEAD
+app.use(cors())
+=======
 app.use(cors());
+>>>>>>> 1a167ca9aa1d7dbcb5755e8a7487b67bfdbcbea9
 
 // Passport stuff
 app.use(
