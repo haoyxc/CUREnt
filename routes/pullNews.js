@@ -122,20 +122,21 @@ getAllQuestions();
 router.get("/dailyEverything", async (req, res) => {
   console.log("daily everything");
   let allQ = await getAllQuestions();
+
   //   console.log(getAllQuestions());
   let allQuestions = _.shuffle(allQ);
   //   console.log(allQuestions);
   console.log("SLICE", allQuestions.slice(0, 10));
   let allQuiz1 = new Quiz({
-    questions: allQuestions.slice(0, 10),
+    questions: JSON.stringify(allQuestions.slice(0, 10)),
     date: new Date()
   });
   let allQuiz2 = new Quiz({
-    questions: allQuestions.slice(10, 20),
+    questions: JSON.stringify(allQuestions.slice(10, 20)),
     date: new Date()
   });
   let allQuiz3 = new Quiz({
-    questions: allQuestions.slice(20, 30),
+    questions: JSON.stringify(allQuestions.slice(20, 30)),
     date: new Date()
   });
 
@@ -173,7 +174,7 @@ router.get("/dailyEverything", async (req, res) => {
     let category = newsCategories[i];
     let qs = await getQuestionsByCategory(category);
     let categoryQuiz = new Quiz({
-      questions: qs,
+      questions: JSON.stringify(qs),
       date: new Date(),
       category: category
     });
@@ -197,8 +198,10 @@ router.get("/quiz", (req, res) => {
     .then(response => {
       console.log(response);
       console.log("getting all quizzes");
+
+      let responseParsed = response.map(quizItem => JSON.parse(quizItem.questions));
       //sends 3 quizzes!!
-      res.send(response);
+      res.send(responseParsed);
     })
     .catch(e => {
       console.log(e);
@@ -208,13 +211,13 @@ router.get("/quiz", (req, res) => {
 
 router.get("/quiz/:category", (req, res) => {
   let category = req.params.category;
-  Quiz.sort({ date: -1 })
-    .findOne({ category: category })
+  Quiz.find({ category: category })
+    .sort({ date: -1 })
     .exec()
     .then(response => {
       console.log(response, category);
       //sends ONE quiz
-      res.send(response);
+      res.send(JSON.parse(response[0].questions));
     })
     .catch(e => {
       console.log(e);
