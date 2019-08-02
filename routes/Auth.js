@@ -12,12 +12,6 @@ function hashPassword(password) {
 }
 
 module.exports = function(passport) {
-	// Signup post
-
-	// router.get("/", (req, res) => {
-	// 	res.send("hi2");
-	// });
-
 	router.post("/signup", async (req, res) => {
 		console.log("in here to sign up dad");
 		const found = await User.findOne({ username: req.body.username }, (err, user) => {
@@ -37,13 +31,6 @@ module.exports = function(passport) {
 		}
 	});
 
-	// router.post("/login", (req, res) => {
-	// 	console.log("I'm here to log in, sir");
-	// 	User.findOne({ username: req.body.username, password: hashPassword(req.body.password) }, () => {
-
-	// 	});
-	// });
-
 	router.post(
 		"/login",
 		passport.authenticate("local", {
@@ -51,6 +38,14 @@ module.exports = function(passport) {
 			failureRedirect: "/login/failure",
 		})
 	);
+
+	router.get("/user", (req, res) => {
+		if (req.user) {
+			res.send({ loggedIn: true });
+		} else {
+			res.send({ loggedIn: false });
+		}
+	});
 
 	router.get("/login/success", (req, res) => {
 		res.json({ success: true });
