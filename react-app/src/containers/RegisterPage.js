@@ -96,8 +96,10 @@ export default function RegisterPage() {
 
   return (
     <div className="register-container">
-      <nav className="navbar navbar-light bg-light" style={{ backgroundColor: "green" }}>
-        <a className="navbar-brand">N_ws Something</a>
+      <nav className="navbar navbar-light bg-light" id="register-navbar">
+        <a className="navbar-brand" className="header-logo">
+          CURent.
+        </a>
         <div className="login-wrapper">
           <input
             type="text"
@@ -119,6 +121,7 @@ export default function RegisterPage() {
                 setErrorText("Login request failed, please try again.");
               })
             }
+            className="login-btn"
           >
             Login
           </button>
@@ -182,7 +185,9 @@ export default function RegisterPage() {
               onChange={e => handleVerifiedPassword(e)}
             />
             <br />
-            <button onClick={() => submitData()}>Submit</button>
+            <button onClick={() => submitData()} className="register-submit-btn">
+              Submit
+            </button>
           </div>
         </div>
       </div>
