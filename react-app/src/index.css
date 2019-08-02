@@ -51,13 +51,15 @@ code {
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-  background-color: #eeeeee;
+  border-radius: 20px;
+  background-color: #EEEEEE;
   color: black;
 }
 
 /* Style the back side */
 .flip-card-back {
-  background-color: #eeeeee;
+  border-radius: 20px;
+  background-color: #EEEEEE;
   transform: rotateY(180deg);
 }
 
@@ -112,10 +114,19 @@ hr {
 .answerBlock {
   text-align: left;
 }
-<<<<<<< HEAD
+
 
 .answerBlock button {
   margin-top: 12px;
 }
-=======
->>>>>>> haoyxc
+
+.flip-card-back input {
+  width: 60%;
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+.navbar input {
+  width: 35%;
+  display: inline-block;
+}

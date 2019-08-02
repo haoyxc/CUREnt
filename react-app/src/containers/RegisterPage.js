@@ -52,7 +52,6 @@ export default function RegisterPage() {
 		const response = await fetch('http://localhost:5000/signup', {
 			method: 'POST',
 			headers: {
-				Accept: 'application/json',
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
@@ -70,7 +69,6 @@ export default function RegisterPage() {
 		const response = await fetch('http://localhost:5000/login', {
 			method: 'POST',
 			headers: {
-				Accept: 'application/json',
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({
@@ -79,6 +77,7 @@ export default function RegisterPage() {
 			})
 		});
 		const content = await response.json();
+		console.log(response)
 		if (!content.success) {
 			setErrorText('Wrong username or password');
 		} else {
@@ -96,9 +95,9 @@ export default function RegisterPage() {
 
 	return (
 		<div className="register-container">
-			<nav className="navbar navbar-light bg-light">
-				<a className="navbar-brand">Navbar</a>
-
+			<nav className="navbar navbar-light bg-light" style={{backgroundColor: "green"}}>
+				<a className="navbar-brand">N_ws Something</a>
+				<div className="login-wrapper">
 				<input
 					type="text"
 					placeholder="username"
@@ -121,6 +120,7 @@ export default function RegisterPage() {
 				>
 					Login
 				</button>
+				</div>
 			</nav>
 			<div className="flip-card">
 				<div className="flip-card-inner" style={flipStyle}>
@@ -141,7 +141,7 @@ export default function RegisterPage() {
 							</h5>
 							<h5>
 								<button className="emptyButton2" onClick={() => flipCard()}>
-									C) Oklahoma
+									C) Michigan
 								</button>
 							</h5>
 							<h5>
@@ -153,6 +153,7 @@ export default function RegisterPage() {
 					</div>
 					<div className="flip-card-back">
 						<h3>Register to find out!</h3>
+						<hr />
 						<p>{errorText}</p>
 						<input
 							type="text"
@@ -175,6 +176,7 @@ export default function RegisterPage() {
 							value={verifiedPassword}
 							onChange={(e) => handleVerifiedPassword(e)}
 						/>
+						<br />
 						<button onClick={() => submitData()}>Submit</button>
 					</div>
 				</div>
