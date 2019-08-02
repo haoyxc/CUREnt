@@ -33,26 +33,27 @@ export default function RegisterPage() {
 	};
 
 	const postSubmit = async () => {
-		const response = await fetch('localhost:3000/signup', {
-			method: 'POST',
-			headers: {
-				Accept: 'application/json',
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				username: username,
-				password: password
-			})
-		});
-		const content = await response.json();
-		if (!content.success) {
-			setErrorText('Sorry, this user already exists');
-		}
-  };
+    const response = await fetch('localhost:5000/signup', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password
+      })
+    })
+    const content = await response.json();
+    if (!content.success) {
+      setErrorText('Sorry, this user already exists');
+    }
+  }
 
   const flipCard = () => {
     setFlipStyle({transform: `rotateY(180deg)`});
   }
+  
 
 	return (
 		<div className="register-container">
