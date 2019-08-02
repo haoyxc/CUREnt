@@ -32,7 +32,7 @@ export default function RegisterPage() {
   }
 
   const postSubmit = async () => {
-    const response = await fetch('localhost:3000/signup', {
+    const response = await fetch('localhost:5000/signup', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
