@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import Stats from '../components/Stats';
 
 
 export default function HomePage() {
@@ -23,5 +24,5 @@ export default function HomePage() {
   },[]);
   
 
-  return <div>HomePage</div>;
+  return <div>HomePage<Stats /></div>;
 }
