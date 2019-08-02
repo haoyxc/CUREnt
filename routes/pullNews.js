@@ -3,13 +3,12 @@ const newsType = ["politics", "technology", "world", "business"];
 const API_KEY = process.env.NYT_API;
 const _ = require("underscore");
 
-// const people = require("../constants/people");
 const country_list = require("../constants/country_list");
 const us_states_list = require("../constants/us_states_list");
 const company_list = require("../constants/company_list");
-// const people = require("../constants/people");
+const people = require("../constants/people");
 
-let allLists = [company_list, us_states_list, country_list];
+let allLists = [people, company_list, us_states_list, country_list];
 
 //get all articles
 async function getArticles(category) {
@@ -93,7 +92,8 @@ async function getQuestions(category) {
     }
   });
   console.log(questions);
+  console.log(questions.length);
 }
 // getArticles(newsType[3]);
 // generateChoices("New Hampshire is cool", allLists);
-getQuestions(newsType[3]);
+getQuestions(newsType[2]);
