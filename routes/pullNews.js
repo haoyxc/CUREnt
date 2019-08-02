@@ -119,20 +119,25 @@ async function getAllQuestions() {
 // getQuestionsByCategory(newsCategories[2]);
 getAllQuestions();
 
-router.get("/dailyEverything", (req, res) => {
-  let allQuestions = _.shuffle(getAllQuestions());
-  let allQuiz1 = {
+router.get("/dailyEverything", async (req, res) => {
+  console.log("daily everything");
+  let allQ = await getAllQuestions();
+  //   console.log(getAllQuestions());
+  let allQuestions = _.shuffle(allQ);
+  //   console.log(allQuestions);
+  console.log("SLICE", allQuestions.slice(0, 10));
+  let allQuiz1 = new Quiz({
     questions: allQuestions.slice(0, 10),
     date: new Date()
-  };
-  let allQuiz2 = {
+  });
+  let allQuiz2 = new Quiz({
     questions: allQuestions.slice(10, 20),
     date: new Date()
-  };
-  let allQuiz3 = {
+  });
+  let allQuiz3 = new Quiz({
     questions: allQuestions.slice(20, 30),
     date: new Date()
-  };
+  });
 
   allQuiz1
     .save()
@@ -166,8 +171,9 @@ router.get("/dailyEverything", (req, res) => {
 
   for (let i = 0; i < newsCategories.length; i++) {
     let category = newsCategories[i];
+    let qs = await getQuestionsByCategory(category);
     let categoryQuiz = new Quiz({
-      questions: getQuestionsByCategory(category),
+      questions: qs,
       date: new Date(),
       category: category
     });
