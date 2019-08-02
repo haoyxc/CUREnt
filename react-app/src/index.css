@@ -278,14 +278,15 @@ input.answerBtn:hover {
 /* End of homepage */
 /* Stats component */
 .stats-container {
-  font-family: "Monda", sans-serif;
+  font-family: "PT Sans Narrow", sans-serif;
   font-size: 0.8rem;
   background-color: var(--primary-pink);
   color: white;
   padding: 10px;
   border-radius: 10px;
-  height: 300px;
+  max-height: 400px;
   padding-top: 30px;
+  width: 300px;
 }
 .stats-header {
   font-size: 1.5rem;
@@ -297,8 +298,6 @@ input.answerBtn:hover {
 }
 
 /* Stats component */
-
-
 
 input.correct-answer {
   background-color: green;
