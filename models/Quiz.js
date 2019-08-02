@@ -1,12 +1,18 @@
 const mongoose = require("mongoose");
-const Question = require("./Question");
 
 const quizSchema = new mongoose.Schema({
-	questions: {
-		type: [mongoose.Schema.ObjectId],
-		ref: Question,
-		required: true,
-	},
+  questions: [
+    {
+      question: String,
+      correctAnswer: String,
+      wrongAnswers: [String]
+    }
+  ],
+  date: Date,
+  category: {
+    type: String,
+    default: "all"
+  }
 });
 
 const Quiz = mongoose.model("Quiz", quizSchema);

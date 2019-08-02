@@ -116,3 +116,13 @@ async function getAllQuestions() {
 // generateChoices("New Hampshire is cool", allLists);
 // getQuestionsByCategory(newsCategories[2]);
 getAllQuestions();
+
+router.get("/everything", (req, res) => {});
+
+router.get("/quiz", (req, res) => {});
+
+router.get("/quiz/:category", (req, res) => {
+  let category = req.params.category;
+});
+
+module.exports = router;
