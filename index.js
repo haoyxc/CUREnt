@@ -17,10 +17,10 @@ const jwt = require("jsonwebtoken");
 const User = require("./models/User");
 let app = express();
 
-// const token = jwt.sign({ _id:  }, 'shhhhh');
-
+// Import the Routes
 const auth = require("./routes/Auth");
 const newsRouter = require("./routes/pullNews");
+const statsRoute = require("./routes/stats");
 
 // Ensure there is a pasword
 if (!process.env.SECRET) {
@@ -36,6 +36,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(newsRouter);
+app.use(statsRoute);
 
 // Passport stuff
 app.use(
