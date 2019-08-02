@@ -106,3 +106,7 @@ hr {
 .answerBlock {
   text-align: left;
 }
+
+.answerBlock button {
+  margin-top: 12px;
+}
