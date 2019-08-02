@@ -11,6 +11,7 @@ const MongoStore = require("connect-mongo")(session);
 const mongoose = require("mongoose");
 const FacebookStrategy = require("passport-facebook");
 const TwitterStrategy = require("passport-twitter");
+const cors = require('cors');
 
 const User = require("./models/User");
 let app = express();
@@ -29,7 +30,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-// app.use(session({ secret: process.env.SECRET }));
+app.use(session({ secret: process.env.SECRET }));
+app.use(cors())
+
+// Middleware additions
+app.use("/", auth(passport));
 
 // Passport stuff
 app.use(
@@ -83,7 +88,7 @@ passport.use(
 	})
 );
 
-const port = 3000;
+const port = 5000;
 // app.get("/", (req, res) => {
 // 	res.send("hi233");
 // });
