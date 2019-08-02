@@ -96,7 +96,7 @@ export default function HomePage() {
         <button onClick={() => getWorldQuestions()}>World</button>
       </div>
       {questions.length ? (
-        <Quiz questions={questions} />
+        <QuizCards allQuestions={questions} />
       ) : // <div>{questions[0].question}</div>
       null}
     </div>);
