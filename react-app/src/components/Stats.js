@@ -35,7 +35,9 @@ export default function Stats({ user }) {
   return (
     <div className="stats-container">
       <h1 className="stats-header">Your Stats</h1>
-      <button onClick={() => getStats()}>Show your stats</button>
+      <button onClick={() => getStats()} className="stats-btn">
+        Show your stats
+      </button>
       {show && (
         <div className="stats-details">
           {!stats ? (
