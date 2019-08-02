@@ -3,6 +3,8 @@ const newsCategories = ["politics", "technology", "world", "business"];
 const API_KEY = process.env.NYT_API;
 const _ = require("underscore");
 
+const Quiz = require("../models/Quiz");
+
 const express = require("express");
 const router = express.Router();
 
@@ -127,12 +129,90 @@ router.get("/dailyEverything", (req, res) => {
     questions: allQuestions.slice(10, 20),
     date: new Date()
   };
+  let allQuiz3 = {
+    questions: allQuestions.slice(20, 30),
+    date: new Date()
+  };
+
+  allQuiz1
+    .save()
+    .then(response => {
+      console.log(response);
+      console.log("saved allQuiz1");
+    })
+    .catch(e => {
+      console.log(e);
+    });
+
+  allQuiz2
+    .save()
+    .then(response => {
+      console.log(response);
+      console.log("saved allQuiz2");
+    })
+    .catch(e => {
+      console.log(e);
+    });
+  allQuiz3
+    .save()
+    .then(response => {
+      console.log(response);
+      console.log("saved allQuiz3");
+    })
+    .catch(e => {
+      console.log(e);
+    });
+
+  for (let i = 0; i < newsCategories.length; i++) {
+    let category = newsCategories[i];
+    let categoryQuiz = new Quiz({
+      questions: getQuestionsByCategory(category),
+      date: new Date(),
+      category: category
+    });
+    categoryQuiz
+      .save()
+      .then(response => {
+        console.log(response);
+        console.log("saved category quiz");
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  }
 });
 
-router.get("/quiz", (req, res) => {});
+router.get("/quiz", (req, res) => {
+  Quiz.find({ category: "all" })
+    .sort({ date: -1 })
+    .limit(3)
+    .exec()
+    .then(response => {
+      console.log(response);
+      console.log("getting all quizzes");
+      //sends 3 quizzes!!
+      res.send(response);
+    })
+    .catch(e => {
+      console.log(e);
+      res.send(e);
+    });
+});
 
 router.get("/quiz/:category", (req, res) => {
   let category = req.params.category;
+  Quiz.sort({ date: -1 })
+    .findOne({ category: category })
+    .exec()
+    .then(response => {
+      console.log(response, category);
+      //sends ONE quiz
+      res.send(response);
+    })
+    .catch(e => {
+      console.log(e);
+      res.send(e);
+    });
 });
 
 module.exports = router;
