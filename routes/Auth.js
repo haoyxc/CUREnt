@@ -14,9 +14,9 @@ function hashPassword(password) {
 module.exports = function(passport) {
 	// Signup post
 
-	router.get("/", (req, res) => {
-		res.send("hi2");
-	});
+	// router.get("/", (req, res) => {
+	// 	res.send("hi2");
+	// });
 
 	router.post("/signup", async (req, res) => {
 		console.log("in here");
