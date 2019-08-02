@@ -2,6 +2,8 @@ const axios = require("axios");
 const newsType = ["politics", "science", "world", "business"];
 const API_KEY = process.env.NYT_API;
 
+const people = require("../constants/people");
+
 async function getArticles(category) {
   try {
     let resp = await axios(
