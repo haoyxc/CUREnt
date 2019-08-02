@@ -1,16 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Alegreya+Sans|Rock+Salt|Fira+Sans|Roboto&display=swap");
 :root {
-<<<<<<< HEAD
-	--primary-blue: #7ecfc0;
-	--primary-light: #f2e3c9;
-	--primary-orange: #ec8f6a;
-	--primary-red: #ef4b4b;
-=======
   --primary-blue: #a5dee5;
   --primary-light: #e0f9b5;
   --primary-orange: #ffd460;
   --primary-red: #cabbe9;
->>>>>>> 1b1da0f4447e84daadfb8eeb27e5172a266c6c7e
 }
 body {
 	margin: 0;
@@ -63,28 +56,16 @@ code {
 
 /* Style the front side (fallback if image is missing) */
 .flip-card-front {
-<<<<<<< HEAD
-	border-radius: 20px;
-	background-color: var(--primary-light);
-	color: black;
-=======
   border-radius: 20px;
   background-color: var(--primary-blue);
   color: black;
->>>>>>> 1b1da0f4447e84daadfb8eeb27e5172a266c6c7e
 }
 
 /* Style the back side */
 .flip-card-back {
-<<<<<<< HEAD
-	border-radius: 20px;
-	background-color: var(--primary-light);
-	transform: rotateY(180deg);
-=======
   border-radius: 20px;
   background-color: var(--primary-blue);
   transform: rotateY(180deg);
->>>>>>> 1b1da0f4447e84daadfb8eeb27e5172a266c6c7e
 }
 /* Card display */
 .question-header {
@@ -106,15 +87,9 @@ button:focus {
 	outline: none;
 }
 .register-submit-btn {
-<<<<<<< HEAD
-	padding: 10px 20px;
-	background-color: var(--primary-orange);
-	border-radius: 20px;
-=======
   padding: 10px 20px;
   background-color: var(--primary-light);
   border-radius: 20px;
->>>>>>> 1b1da0f4447e84daadfb8eeb27e5172a266c6c7e
 }
 .navbar {
 	position: relative;
@@ -189,11 +164,7 @@ hr {
 	display: inline-block;
 }
 #register-navbar {
-<<<<<<< HEAD
-	background-color: var(--primary-blue) !important;
-=======
   background-color: var(--primary-red) !important;
->>>>>>> 1b1da0f4447e84daadfb8eeb27e5172a266c6c7e
 }
 
 .answerBtn {
