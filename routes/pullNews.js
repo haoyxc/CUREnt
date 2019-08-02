@@ -7,7 +7,7 @@ const _ = require("underscore");
 const country_list = require("../constants/country_list");
 const us_states_list = require("../constants/us_states_list");
 const company_list = require("../constants/company_list");
-const people = require("../constants/people");
+// const people = require("../constants/people");
 
 let allLists = [company_list, us_states_list, country_list];
 
@@ -25,13 +25,14 @@ async function getArticles(category) {
       url: article.url
     }));
     console.log(abstracts);
+    return abstracts;
   } catch (e) {
     console.log(e);
   }
 }
 
-//To generate a question
-function generateChoices(singleAbstract) {
+//To generate a question's choices based on an abstract (String) and a list of lists
+function generateChoices(singleAbstract, allLists) {
   let abstract = singleAbstract.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "");
 
   let match = null;
@@ -63,7 +64,7 @@ function checker(sentence, arr) {
   }
 
   if (matchWord) {
-    choices = _.shuffle(arr).slice(0, 3);
+    choices = _.shuffle(arr.filter(word => word !== matchWord)).slice(0, 3);
     return {
       matchWord,
       choices
@@ -73,5 +74,26 @@ function checker(sentence, arr) {
   return matchWord;
 }
 
+async function getQuestions(category) {
+  let questions = [];
+
+  let abstracts = await getArticles(category);
+  //   console.log(abstracts);
+  abstracts.forEach(item => {
+    let generatedChoices = generateChoices(item.abstract, allLists);
+    if (generatedChoices) {
+      let { matchWord, choices } = generatedChoices;
+      let questionWithoutAnswer = item.abstract.replace(matchWord, "__________");
+      let questionObj = {
+        question: questionWithoutAnswer,
+        correctAnswer: matchWord,
+        wrongAnswers: choices
+      };
+      questions.push(questionObj);
+    }
+  });
+  console.log(questions);
+}
 // getArticles(newsType[3]);
-generateChoices("New Hampshire is cool");
+// generateChoices("New Hampshire is cool", allLists);
+getQuestions(newsType[3]);
