@@ -6,19 +6,11 @@
 	--primary-red: #ef4b4b;
 }
 body {
-<<<<<<< HEAD
   margin: 0;
   font-family: "Fira Sans", "Alegreya Sans", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
     "Cantarell", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-=======
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-		"Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
->>>>>>> 8bd3cda60cd766073a86c4616d17c2a5a50ffc26
 }
 
 code {
