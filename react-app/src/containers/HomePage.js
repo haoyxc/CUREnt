@@ -1,113 +1,120 @@
-import React, {useState, useEffect} from "react";
-import { Redirect } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import Stats from "../components/Stats";
+import { Redirect } from "react-router-dom";
 
+const parseJwt = token => {
+	console.log(token, typeof token);
+	var base64Url = token.split(".")[1];
+	var base64 = base64Url.replace("-", "+").replace("_", "/");
+	return JSON.parse(window.atob(base64));
+};
 
 export default function HomePage() {
-  const [questions, setQuestions] = useState([]);
+	const [questions, setQuestions] = useState([]);
 
-  const getAllQuestions = async () => {
-    try {
-      let response = await fetch('http://localhost:5000/quiz', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
-      response = await response.json();
-      setQuestions(response[Math.floor(Math.random()*3)]);
-    }
-    catch(err) {
-      console.log(err);
-    }
-  }
+	const getAllQuestions = async () => {
+		try {
+			let response = await fetch("http://localhost:5000/quiz", {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+			response = await response.json();
+			setQuestions(response[Math.floor(Math.random() * 3)]);
+		} catch (err) {
+			console.log(err);
+		}
+	};
 
-  const getBusinessQuestions = async () => {
-    try {
-      let response = await fetch('http://localhost:5000/quiz/business', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
-      response = await response.json();
-      setQuestions(response);
-    }
-    catch(err) {
-      console.log(err);
-    }
-  }
+	const getBusinessQuestions = async () => {
+		try {
+			let response = await fetch("http://localhost:5000/quiz/business", {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+			response = await response.json();
+			setQuestions(response);
+		} catch (err) {
+			console.log(err);
+		}
+	};
 
-  const getPoliticsQuestions = async () => {
-    try {
-      let response = await fetch('http://localhost:5000/quiz/politics', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
-      response = await response.json();
-      setQuestions(response);
-    }
-    catch(err) {
-      console.log(err);
-    }
-  }
+	const getPoliticsQuestions = async () => {
+		try {
+			let response = await fetch("http://localhost:5000/quiz/politics", {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+			response = await response.json();
+			setQuestions(response);
+		} catch (err) {
+			console.log(err);
+		}
+	};
 
-  const getTechQuestions = async () => {
-    try {
-      let response = await fetch('http://localhost:5000/quiz/technology', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
-      response = await response.json();
-      setQuestions(response);
-    }
-    catch(err) {
-      console.log(err);
-    }
-  }
+	const getTechQuestions = async () => {
+		try {
+			let response = await fetch("http://localhost:5000/quiz/technology", {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+			response = await response.json();
+			setQuestions(response);
+		} catch (err) {
+			console.log(err);
+		}
+	};
 
-  const getWorldQuestions = async () => {
-    try {
-      let response = await fetch('http://localhost:5000/quiz/world', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
-      response = await response.json();
-      setQuestions(response);
-    }
-    catch(err) {
-      console.log(err);
-    }
-  }
+	const getWorldQuestions = async () => {
+		try {
+			let response = await fetch("http://localhost:5000/quiz/world", {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+			response = await response.json();
+			setQuestions(response);
+		} catch (err) {
+			console.log(err);
+		}
+	};
 
-  return (<div>
-    <h1>HomePage</h1>
-    <div style={styles.row}>
-      <button onClick={()=>getAllQuestions()}>Everything</button>
-      <button onClick={()=>getBusinessQuestions()}>Business</button>
-      <button onClick={()=>getTechQuestions()}>Technology</button>
-    </div>
-    <div style={styles.row}>
-      <button onClick={()=>getPoliticsQuestions()}>Politics</button>
-      <button onClick={()=>getWorldQuestions()}>World</button>
-    </div>  
-    {questions.length ? <div>{questions[0].question}</div> : null}
-  </div>);
+	// console.log(localStorage.getItem("token"));
+
+	return (
+		<div>
+			<h1>HomePage</h1>
+			<div style={styles.row}>
+				<button onClick={() => getAllQuestions()}>Everything</button>
+				<button onClick={() => getBusinessQuestions()}>Business</button>
+				<button onClick={() => getTechQuestions()}>Technology</button>
+			</div>
+			<div style={styles.row}>
+				<button onClick={() => getPoliticsQuestions()}>Politics</button>
+				<button onClick={() => getWorldQuestions()}>World</button>
+			</div>
+			{questions.length ? <div>{questions[0].question}</div> : null}
+			<Stats user={parseJwt(localStorage.getItem("token")).username} />
+		</div>
+	);
 }
 
 const styles = {
-  row: {
-    flex: 1,
-    alignItems: 'center'
-  },
-  catSel: {
-    height: 50,
-    width: 40,
-    borderRadius: 5
-  }
-}
+	row: {
+		flex: 1,
+		alignItems: "center",
+	},
+	catSel: {
+		height: 50,
+		width: 40,
+		borderRadius: 5,
+	},
+};
