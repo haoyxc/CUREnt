@@ -1,4 +1,4 @@
-var county_list = [
+var country_list = [
   "Afghanistan",
   "Albania",
   "Algeria",
@@ -209,4 +209,4 @@ var county_list = [
   "Zimbabwe"
 ];
 
-export default country_list;
+module.exports = country_list;
