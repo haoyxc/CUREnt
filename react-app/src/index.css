@@ -116,6 +116,13 @@ button:focus {
   margin-left: -50px !important; /* 50% of your logo width */
   display: block;
 }
+.home-navbar {
+  display: flex;
+  justify-content: center;
+}
+.navbar-brand.header-logo {
+  text-align: center;
+}
 
 .emptyButton {
   padding: 0;
@@ -177,7 +184,8 @@ hr {
   width: 35%;
   display: inline-block;
 }
-#register-navbar {
+#register-navbar,
+.home-navbar {
   background-color: var(--primary-blue) !important;
 }
 
