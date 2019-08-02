@@ -91,9 +91,11 @@ const port = process.env.PORT || 5000;
 // app.get("/", (req, res) => {
 // 	res.send("hi233");
 // });
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 // Routes
+app.get("/", (req, res) => res.send("hi"));
 app.use("/", auth(passport));
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
 module.exports = app;

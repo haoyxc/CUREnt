@@ -108,10 +108,10 @@ async function getAllQuestions() {
   );
   questions = questions.flat();
 
-  console.log(questions.length);
+  //   console.log(questions.length);
   let uniqueQuestions = _.uniq(questions, "question");
-  console.log(uniqueQuestions.length);
-  console.log(uniqueQuestions);
+  //   console.log(uniqueQuestions.length);
+  //   console.log(uniqueQuestions);
   return uniqueQuestions;
 }
 // getArticles(newsCategories[3]);
@@ -137,7 +137,7 @@ router.get("/dailyEverything", (req, res) => {
   allQuiz1
     .save()
     .then(response => {
-      console.log(response);
+      //   console.log("QUIZ!", response);
       res.send(response);
       console.log("saved allQuiz1");
     })
@@ -148,7 +148,7 @@ router.get("/dailyEverything", (req, res) => {
   allQuiz2
     .save()
     .then(response => {
-      console.log(response);
+      console.log("QUIZ2", response);
       console.log("saved allQuiz2");
     })
     .catch(e => {
@@ -157,7 +157,7 @@ router.get("/dailyEverything", (req, res) => {
   allQuiz3
     .save()
     .then(response => {
-      console.log(response);
+      //   console.log("QUIZ3", response);
       console.log("saved allQuiz3");
     })
     .catch(e => {
@@ -174,7 +174,7 @@ router.get("/dailyEverything", (req, res) => {
     categoryQuiz
       .save()
       .then(response => {
-        console.log(response);
+        // console.log(response);
         console.log("saved category quiz");
       })
       .catch(e => {
