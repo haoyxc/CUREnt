@@ -290,3 +290,13 @@ input.answerBtn:hover {
 }
 
 /* Stats component */
+
+
+
+input.correct-answer {
+  background-color: green;
+}
+
+input.incorrect-answer {
+  background-color: red;
+}

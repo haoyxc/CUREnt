@@ -72,6 +72,7 @@ export default function HomePage() {
         }
       });
       response = await response.json();
+      console.log(response);
       setQuestions(response);
     } catch (err) {
       console.log(err);
@@ -141,8 +142,7 @@ export default function HomePage() {
           user={parseJwt(localStorage.getItem("token")).username}
         />
       </div>
-    </div>
-  );
+    </div>);
 }
 
 const styles = {
