@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { Redirect } from 'react-router-dom';
+import QuizCards from '../components/QuizCards'
 
 
 export default function HomePage() {
@@ -96,7 +97,7 @@ export default function HomePage() {
       <button onClick={()=>getPoliticsQuestions()}>Politics</button>
       <button onClick={()=>getWorldQuestions()}>World</button>
     </div>  
-    {questions.length ? <div>{questions[0].question}</div> : null}
+    {questions.length ? <div><QuizCards allQuestions={questions}/></div> : null}
   </div>);
 }
 

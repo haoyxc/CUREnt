@@ -29,13 +29,14 @@ if (!process.env.SECRET) {
 }
 
 // Middleware Protocols
+app.use(cors());
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(newsRouter);
-app.use(cors());
+
 
 // Passport stuff
 app.use(
