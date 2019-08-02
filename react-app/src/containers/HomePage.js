@@ -117,11 +117,6 @@ export default function HomePage() {
           user={parseJwt(localStorage.getItem("token")).username}
         />
       </div>
-      {questions.length ? (
-        <QuizCards allQuestions={questions}/>
-      ) : // <div>{questions[0].question}</div>
-      null}
-      <Stats user={parseJwt(localStorage.getItem("token")).username} />
     </div>);
 }
 
