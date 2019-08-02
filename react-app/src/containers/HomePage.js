@@ -93,6 +93,30 @@ export default function HomePage() {
     }
   };
 
+  async function intervalFunction() {
+    let date = new Date();
+    if (date.getHours() === 8) {
+      try {
+        let response = await fetch("http://localhost:5000/dailyEverything", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }
+
+  useEffect(() => {
+    intervalFunction();
+    let interval = setInterval(intervalFunction, 3600000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
     <div>
       <Header />
