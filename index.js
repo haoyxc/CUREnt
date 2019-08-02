@@ -12,9 +12,10 @@ const mongoose = require("mongoose");
 const FacebookStrategy = require("passport-facebook");
 const TwitterStrategy = require("passport-twitter");
 
-const models = require("./models/models");
-const User = models.User;
+const User = require("./models/User");
 let app = express();
+
+const auth = require("./routes/Auth");
 
 // Ensure there is a pasword
 if (!process.env.SECRET) {
@@ -28,7 +29,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-app.use(session({ secret: process.env.MY_SECRET }));
+app.use(session({ secret: process.env.SECRET }));
+
+// Middleware additions
+app.use("/", auth(passport));
 
 // Passport stuff
 app.use(
@@ -79,4 +83,8 @@ passport.use(
 	})
 );
 
-module.exports = app;
+const port = 5000;
+// app.get("/", (req, res) => {
+// 	res.send("hi233");
+// });
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
