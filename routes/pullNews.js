@@ -1,5 +1,5 @@
 const axios = require("axios");
-const newsType = ["politics", "technology", "world", "business"];
+const newsCategories = ["politics", "technology", "world", "business"];
 const API_KEY = process.env.NYT_API;
 const _ = require("underscore");
 
@@ -23,7 +23,7 @@ async function getArticles(category) {
       abstract: article.abstract,
       url: article.url
     }));
-    console.log(abstracts);
+    // console.log(abstracts);
     return abstracts;
   } catch (e) {
     console.log(e);
@@ -44,11 +44,11 @@ function generateChoices(singleAbstract, allLists) {
   }
   if (match && matchList) {
     let { matchWord, choices } = checker(abstract, matchList);
-    console.log(matchWord, choices);
+    // console.log(matchWord, choices);
     return { matchWord, choices };
   } else {
     //returns falsey value if there is no match
-    console.log("no match");
+    // console.log("no match");
     return null;
   }
 }
@@ -73,7 +73,7 @@ function checker(sentence, arr) {
   return matchWord;
 }
 
-async function getQuestions(category) {
+async function getQuestionsByCategory(category) {
   let questions = [];
 
   let abstracts = await getArticles(category);
@@ -86,14 +86,30 @@ async function getQuestions(category) {
       let questionObj = {
         question: questionWithoutAnswer,
         correctAnswer: matchWord,
-        wrongAnswers: choices
+        wrongAnswers: choices,
+        sourceLink: item.url
       };
       questions.push(questionObj);
     }
   });
-  console.log(questions);
-  console.log(questions.length);
+  return questions;
+  //   console.log(questions);
+  //   console.log(questions.length);
 }
-// getArticles(newsType[3]);
+//get all questions - duplicates are ignored
+async function getAllQuestions() {
+  let questions = await Promise.all(
+    newsCategories.map(category => getQuestionsByCategory(category))
+  );
+  questions = questions.flat();
+
+  console.log(questions.length);
+  let uniqueQuestions = _.uniq(questions, "question");
+  console.log(uniqueQuestions.length);
+  console.log(uniqueQuestions);
+  return uniqueQuestions;
+}
+// getArticles(newsCategories[3]);
 // generateChoices("New Hampshire is cool", allLists);
-getQuestions(newsType[2]);
+// getQuestionsByCategory(newsCategories[2]);
+getAllQuestions();
