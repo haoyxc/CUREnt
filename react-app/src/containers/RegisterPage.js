@@ -62,6 +62,11 @@ export default function RegisterPage() {
     const content = await response.json();
     if (!content.success) {
       setErrorText("Sorry, this user already exists");
+    } else {
+      setErrorText("Your account was created successfuly! Please log in.");
+      setUsername('');
+      setPassword('');
+      setVerifiedPassword('');
     }
   };
 
@@ -154,7 +159,7 @@ export default function RegisterPage() {
               </h5>
               <h5>
                 <button className="emptyButton2" onClick={() => flipCard()}>
-                  D) Kyle's room
+                  D) Pennsylvania
                 </button>
               </h5>
             </div>
